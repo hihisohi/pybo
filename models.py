@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 
 from database import Base
 
-# 질문 모델
+# Question 모델
 class Question(Base):
     __tablename__ = "question"
 
@@ -12,7 +12,7 @@ class Question(Base):
     content = Column(Text, nullable=False)
     create_date = Column(DateTime, nullable=False)
 
-# 답변 모델
+# Answer 모델
 class Answer(Base):
     __tablename__ = "answer"
 

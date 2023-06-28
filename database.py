@@ -12,8 +12,9 @@ engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 )
 
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # SessionLocal : 데이터 베이스에 접속하기 위한 클래스, 추후 이 클래스로 생성한 db세션 객체를 사용한다.
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) # autocommit이 True이면 커밋하지 않아도 즉시 db에 변경사항이 적용되므로 rollback이 되지 않으니 주의!
+# autocommit이 True이면 커밋하지 않아도 즉시 db에 변경사항이 적용되므로 rollback이 되지 않으니 주의!
 
 # 데이터베이스 모델 구성
 Base = declarative_base()

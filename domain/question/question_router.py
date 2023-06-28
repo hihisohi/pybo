@@ -2,13 +2,14 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from database import get_db
+from domain.question import question_schema
 from models import Question
 
 router = APIRouter(
     prefix="/api/question"
 )
 
-@router.get("/list")
+@router.get("/list", response_model=list[question_schema.Question])
 # 기본
 # def question_list():
 #     db = SessionLocal() # db세션 생성
