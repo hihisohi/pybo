@@ -19,7 +19,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) # au
 Base = declarative_base()
 
 # Dependency Injection (의존성 주입)
-@contextlib.contextmanager
 def get_db():   # db 세션 객체를 리턴하는 제너레이터
     db = SessionLocal()
     try:
