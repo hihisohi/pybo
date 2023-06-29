@@ -2,10 +2,6 @@
 ```Svelte 개발 환경 준비하기``` [링크](https://wikidocs.net/175833)  
 ```FastAPI 개발 환경 준비하기``` [링크](https://wikidocs.net/175831)
 
-```
-(myapi) myapi % uvicorn main:app --reload
-```
-
 <br />
 
 ## 실행 방법
