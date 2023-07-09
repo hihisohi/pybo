@@ -1,6 +1,8 @@
 <script>
     import fastapi from "../lib/api";
     import Error from '../components/Error.svelte'
+    import { push } from "svelte-spa-router";
+    import dayjs from 'dayjs'
 
     export let params = {}
     let question_id = params.question_id
@@ -42,17 +44,24 @@
 
 </script>
 
-<h1>{question.subject}</h1>
+<h2>{question.subject}</h2>
+<div>{dayjs(question.create_date).format('YYYY년 MM월 DD일 HH:mm:ss')}</div>
 <div>
     {question.content}
 </div>
-<ul>
-    {#each question.answers as answer}
-        <li>{answer.content}</li>
-    {/each}
-</ul>
 <Error error={error} />
 <form method="post">
     <textarea rows="15" bind:value={content}></textarea>    <!-- textarea 작성내용이 content변수와 연결되어 값을 변경할때마다 content값도 자동으로 변경됨  -->
     <input type="submit" value="답변등록" on:click="{post_answer}">
 </form>
+
+<button class="btn-primary" on:click="{() => {
+    push('/')
+}}">목록으로</button>
+
+<h4>{question.answers.length}개의 답변이 있습니다.</h4>
+<ul>
+    {#each question.answers as answer}
+        <li>{answer.content}</li>
+    {/each}
+</ul>
