@@ -3,7 +3,7 @@
     import { page } from '../lib/store'
 
     let navLinks = [
-        ['회원가입', '/join'], 
+        ['회원가입', '/user-create'], 
         ['로그인', '/login']
     ]
 </script>
@@ -15,7 +15,7 @@
     <nav>
         <ul class="flex">
             {#each navLinks as [title, url]}
-            <li class="px-4"><a use:link href="{url}" class="text-indigo-800 font-bold">{title}</a></li>
+            <li class="px-4"><a use:link href="{url}" class="text-indigo-700 font-bold">{title}</a></li>
             {/each}
         </ul>
     </nav>
