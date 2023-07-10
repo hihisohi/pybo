@@ -15,6 +15,6 @@
 </script>
 
 <Navigation />
-<div class="container mx-auto px-5">
+<div class="container mx-auto px-5 py-28">
   <Router {routes} />
 </div>

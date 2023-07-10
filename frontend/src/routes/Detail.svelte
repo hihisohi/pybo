@@ -43,25 +43,29 @@
 
 
 </script>
-
-<h2>{question.subject}</h2>
-<div>{dayjs(question.create_date).format('YYYY년 MM월 DD일 HH:mm:ss')}</div>
-<div>
-    {question.content}
+<div class="deatil-header border-b pb-6">
+    <h2 class="text-3xl font-bold mb-6">{question.subject}</h2>
+    <div>{dayjs(question.create_date).format('YYYY년 MM월 DD일 HH:mm:ss')}</div>
 </div>
-<Error error={error} />
-<form method="post">
-    <textarea rows="15" bind:value={content}></textarea>    <!-- textarea 작성내용이 content변수와 연결되어 값을 변경할때마다 content값도 자동으로 변경됨  -->
-    <input type="submit" value="답변등록" on:click="{post_answer}">
-</form>
+<div class="deatil-body mb-6 py-12 border-b">
+    <div>
+        {question.content}
+    </div>
+    <Error error={error} />
+</div>
+<div class="deatil-footer">
+    <button class="block btn-primary mr-0 ml-auto" on:click="{() => {
+        push('/')
+    }}">목록으로</button>
+    <h4 class="text-lg font-bold mb-6">답변 <span class="text-indigo-500">{question.answers.length}</span></h4>
+    <form method="post" class="w-full mb-10">
+        <textarea rows="6" bind:value={content} class="w-full border resize-none mb-4" placeholder="답변을 작성해주세요"></textarea>    <!-- textarea 작성내용이 content변수와 연결되어 값을 변경할때마다 content값도 자동으로 변경됨  -->
+        <input type="submit" value="답변 등록" on:click="{post_answer}" class="btn-submit block mr-0 ml-auto">
+    </form>
+    <ul>
+        {#each question.answers as answer}
+            <li class="border-t py-6">{answer.content}</li>
+        {/each}
+    </ul>
+</div>
 
-<button class="btn-primary" on:click="{() => {
-    push('/')
-}}">목록으로</button>
-
-<h4>{question.answers.length}개의 답변이 있습니다.</h4>
-<ul>
-    {#each question.answers as answer}
-        <li>{answer.content}</li>
-    {/each}
-</ul>
